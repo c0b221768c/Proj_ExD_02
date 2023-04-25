@@ -14,6 +14,7 @@ move_key_list = {
 
 
 
+
 def check_bound(screen_rect:pg.Rect,obj_rect:pg.Rect) -> tuple[bool,bool]:
     """
     オブジェクトが画面内or画面外を判定し、真理値(True,False)を判定し、真理値タプルを返す関数
@@ -58,6 +59,8 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return 0
+        tmr += 1
+
 
 
         key_lst = pg.key.get_pressed()
