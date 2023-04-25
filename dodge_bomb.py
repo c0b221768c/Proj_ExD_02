@@ -14,10 +14,14 @@ def main():
     bomb_img = pg.Surface((20, 20))
     pg.draw.circle(bomb_img,(255,0,0),(10,10),10)
     bomb_img.set_colorkey((0,0,0))
+    
     # set random number Ex.02
     rdm_num_horizontal = random.randint(0,1200)
     rdm_num_vertical = random.randint(0,900)
-
+    # move a bomb Ex.03
+    vx,vy = +1,+1
+    bomb_rect = bomb_img.get_rect()
+    bomb_rect.center = rdm_num_horizontal,rdm_num_vertical
 
     while True:
         for event in pg.event.get():
@@ -27,7 +31,9 @@ def main():
         tmr += 1
         screen.blit(bg_img, [0, 0])
         screen.blit(kk_img, [900, 400])
-        screen.blit(bomb_img, [rdm_num_horizontal, rdm_num_vertical])
+        bomb_rect.move_ip(vx, vy)
+        screen.blit(bomb_img, bomb_rect)
+
 
         pg.display.update()
         clock.tick(1000)
