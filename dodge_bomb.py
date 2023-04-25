@@ -1,5 +1,6 @@
 import pygame as pg
 import sys
+import random
 
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
@@ -9,14 +10,13 @@ def main():
     kk_img = pg.image.load("./fig/3.png")
     kk_img = pg.transform.rotozoom(kk_img, 0, 2.0)
     tmr = 0
-
     # make a bomb Ex.01
     bomb_img = pg.Surface((20, 20))
     pg.draw.circle(bomb_img,(255,0,0),(10,10),10)
     bomb_img.set_colorkey((0,0,0))
-    # set bomb randomly
-    # rdm_num = 
-    #get_bomb_position = bomb_img.
+    # set random number Ex.02
+    rdm_num_horizontal = random.randint(0,1200)
+    rdm_num_vertical = random.randint(0,900)
 
 
     while True:
@@ -27,7 +27,7 @@ def main():
         tmr += 1
         screen.blit(bg_img, [0, 0])
         screen.blit(kk_img, [900, 400])
-        screen.blit(bomb_img, [900, 600])
+        screen.blit(bomb_img, [rdm_num_horizontal, rdm_num_vertical])
 
         pg.display.update()
         clock.tick(1000)
