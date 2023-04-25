@@ -32,7 +32,7 @@ def check_bound(screen_rect:pg.Rect,obj_rect:pg.Rect) -> tuple[bool,bool]:
 def main():
     pg.display.set_caption("逃げろ！こうかとん")
     screen = pg.display.set_mode((1200, 900))
-    clock = pg.time.Clock()
+    clock = pg.time.Clock() # once per frame (later use)
     bg_img = pg.image.load("./fig/pg_bg.jpg")
     kk_img = pg.image.load("./fig/3.png")
     kk_img = pg.transform.rotozoom(kk_img, 0, 2.0)
