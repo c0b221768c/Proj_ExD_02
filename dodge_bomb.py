@@ -13,8 +13,6 @@ move_key_list = {
          }
 
 
-
-
 def check_bound(screen_rect:pg.Rect,obj_rect:pg.Rect) -> tuple[bool,bool]:
     """
     オブジェクトが画面内or画面外を判定し、真理値(True,False)を判定し、真理値タプルを返す関数
