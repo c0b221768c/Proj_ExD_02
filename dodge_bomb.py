@@ -22,15 +22,34 @@ def main():
     vx,vy = +1,+1
     bomb_rect = bomb_img.get_rect()
     bomb_rect.center = rdm_num_horizontal,rdm_num_vertical
+    # get user keystrokes Ex.04
+    kk_rect = kk_img.get_rect() # set rect
+    kk_rect.center = 900,400
+    delta = { # make list
+        pg.K_UP: (0,-1),
+        pg.K_DOWN: (0,+1),
+        pg.K_LEFT: (-1,0),
+        pg.K_RIGHT: (+1,0)
+    }
+    
+    
+
+
 
     while True:
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return 0
+            
+            
+        key_list = pg.key.get_pressed()    
+        for k,mv in delta.items():
+            if key_list[k]:
+                kk_rect.move_ip(mv)
 
         tmr += 1
         screen.blit(bg_img, [0, 0])
-        screen.blit(kk_img, [900, 400])
+        screen.blit(kk_img, kk_rect)
         bomb_rect.move_ip(vx, vy)
         screen.blit(bomb_img, bomb_rect)
 
