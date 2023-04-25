@@ -75,12 +75,12 @@ def main():
 
         screen.blit(bg_img, [0, 0])
         screen.blit(kk_img, kk_rect)
-        bomb_rect.move_ip(vx+tmr1,vy+tmr1) # 練習3
+        bomb_rect.move_ip(vx,vy) # 練習3
         horizontal,vertical = check_bound(screen.get_rect(),bomb_rect)
         if not horizontal: # 横方向にはみ出ていたら
-            vx *= -1-tmr1
+            vx *= -1
         if not vertical: # 縦方向にはみ出ていたら
-            vy *= -1-tmr1
+            vy *= -1
         screen.blit(bomb_img,bomb_rect) # 練習3
         if kk_rect.colliderect(bomb_rect): # 練習6
             # Show timer result
