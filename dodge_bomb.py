@@ -40,7 +40,6 @@ def main():
     kk_rect.center =900,400
 
 
-
     bomb_img = pg.Surface((20,20))
     pg.draw.circle(bomb_img,(255,0,0),(10,10),10)
     bomb_img.set_colorkey((0,0,0))
