@@ -11,10 +11,6 @@ move_key_list = {
          pg.K_LEFT :(-1,0),
          pg.K_RIGHT :(+1,0)
          }
-move_direction_list = {
-    
-}
-
 
 
 
@@ -49,12 +45,12 @@ def main():
     bomb_img = pg.Surface((20,20))
     pg.draw.circle(bomb_img,(255,0,0),(10,10),10)
     bomb_img.set_colorkey((0,0,0))
-    vx,vy=+1,+1#練習3
-    bomb_rect = bomb_img.get_rect()#練習3
-    bomb_rect.center =random.randint(0, 1200),random.randint(0, 900)#練習3
-    tmr = 0#練習3
+    vx,vy=+1,+1 # 練習3
+    bomb_rect = bomb_img.get_rect() # 練習3
+    bomb_rect.center =random.randint(0, 1200),random.randint(0, 900) # 練習3
+    tmr = 0 # 練習3
 
-    # make timer
+    # Make timer
     start_timer = time.time()
  
 
@@ -62,7 +58,6 @@ def main():
         for event in pg.event.get():
             if event.type == pg.QUIT: 
                 return 0
-        tmr += 1
 
 
         key_lst = pg.key.get_pressed()
@@ -77,14 +72,15 @@ def main():
 
         screen.blit(bg_img, [0, 0])
         screen.blit(kk_img, kk_rect)
-        bomb_rect.move_ip(vx,vy)#練習3
+        bomb_rect.move_ip(vx+tmr1,vy+tmr1) # 練習3
         horizontal,vertical = check_bound(screen.get_rect(),bomb_rect)
-        if not horizontal: #横方向にはみ出ていたら
-            vx *= -1
-        if not vertical: #縦方向にはみ出ていたら
-            vy *= -1
-        screen.blit(bomb_img,bomb_rect)#練習3
-        if kk_rect.colliderect(bomb_rect):#練習6
+        if not horizontal: # 横方向にはみ出ていたら
+            vx *= -1-tmr1
+        if not vertical: # 縦方向にはみ出ていたら
+            vy *= -1-tmr1
+        screen.blit(bomb_img,bomb_rect) # 練習3
+        if kk_rect.colliderect(bomb_rect): # 練習6
+            # Show timer result
             stop_timer = time.time()
             result = math.floor(stop_timer-start_timer)
             messagebox.showinfo('結果発表',str(result)+'秒！')
